@@ -6,18 +6,21 @@ import java.util.Random;
 public class TicTacToe extends JFrame implements ActionListener {
     boolean xTurn;
     boolean keepPlaying = false;
-    JButton replay = new JButton("Replay");
-    JButton quit = new JButton("Quit");
-    JPanel gameButtonsPanel = new JPanel();
-    JPanel titlePanel = new JPanel();
-    JPanel gamePanel = new JPanel();
-    JPanel scorePanel = new JPanel();
-    JButton[] buttons = new JButton[9];
-    JLabel title = new JLabel("Tic-Tac-Toe");
     int xPoints = 0;
     int oPoints = 0;
     JLabel xScore = new JLabel("X: " + xPoints);
     JLabel oScore = new JLabel("O: " + oPoints);
+
+    JButton replay = new JButton("Replay");
+    JButton quit = new JButton("Quit");
+    JButton[] buttons = new JButton[9];
+
+    JPanel gameButtonsPanel = new JPanel();
+    JPanel titlePanel = new JPanel();
+    JPanel gamePanel = new JPanel();
+    JPanel scorePanel = new JPanel();
+
+    JLabel title = new JLabel("Tic-Tac-Toe");
 
     Random rand = new Random();
 
@@ -37,16 +40,19 @@ public class TicTacToe extends JFrame implements ActionListener {
         for (int i = 0; i < 9; i++) {
             buttons[i] = new JButton();
             buttons[i].addActionListener(this);
+            buttons[i].setFocusable(false);
             gamePanel.add(buttons[i]);
         }
 
         replay.addActionListener(this);
+        replay.setFocusable(false);
         replay.setSize(new Dimension(6, 3));
-        replay.setFont(new Font("Ink Free", Font.BOLD,  20));
+        replay.setFont(new Font("Tahoma", Font.BOLD,  20));
 
         quit.addActionListener(this);
+        quit.setFocusable(false);
         quit.setSize(new Dimension(6, 3));
-        quit.setFont(new Font("Ink Free", Font.BOLD,  20));
+        quit.setFont(new Font("Tahoma", Font.BOLD,  20));
 
         gameButtonsPanel.setLayout(new GridLayout());
 
@@ -73,6 +79,7 @@ public class TicTacToe extends JFrame implements ActionListener {
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Tic-Tac-Toe");
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
 
         xTurn = firstTurn();
